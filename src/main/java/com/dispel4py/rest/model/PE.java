@@ -17,15 +17,20 @@ public class PE extends Registry {
     Integer peId;
     @Column(unique = true)
     String peName;
-    @Column(length = 5000)
+    @Lob
+    @Column(columnDefinition = "LONGBLOB")
     String peCode;
+    
     @Column
     String description;
     @Column
     String peImports;
-    @Column(length = 20000)
+
+    @Lob
+    @Column(columnDefinition = "LONGBLOB")
     String codeEmbedding;
-    @Column(length = 20000)
+    @Lob
+    @Column(columnDefinition = "LONGBLOB")
     String descEmbedding;
     @JsonIgnore
     @ManyToMany(mappedBy = "PEs")
