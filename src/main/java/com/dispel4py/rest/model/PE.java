@@ -2,12 +2,26 @@ package com.dispel4py.rest.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+// import org.hibernate.annotations.JdbcTypeCode;
+// import org.hibernate.annotations.Type;
+// import org.hibernate.annotations.TypeDef;
+// import org.hibernate.annotations.TypeDefs;
+// import org.hibernate.type.SqlTypes;
+// import org.json.JSONObject;
 import javax.persistence.*;
 import java.util.List;
 
 /**
+ * TODO clean up
  * Model Class to represent Processing Elements (PEs)
  */
+
+// @TypeDefs({
+//   @TypeDef(name = "json", typeClass = JSONObject.class),
+// })
+
+
+
 @Entity
 @Table(name = "processing_elements")
 public class PE extends Registry {
@@ -32,6 +46,12 @@ public class PE extends Registry {
     @Lob
     @Column(columnDefinition = "LONGBLOB")
     String descEmbedding;
+
+    @Lob
+    // @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "LONGBLOB")
+    String astEmbedding;
+
     @JsonIgnore
     @ManyToMany(mappedBy = "PEs")
     private List<Workflow> workflows;
@@ -42,7 +62,7 @@ public class PE extends Registry {
 
     public PE(Integer id, String PEName, String PECode,
               String description, String peImports,
-              String codeEmbeddings, String descEmbeddings,List<User> user) {
+              String codeEmbeddings, String descEmbeddings, String astEmbedding, List<User> user) {
 
         this.peId = id;
         this.peName = PEName;
@@ -52,6 +72,7 @@ public class PE extends Registry {
         this.user = user;
         this.codeEmbedding = codeEmbeddings;
         this.descEmbedding = descEmbeddings;
+        this.astEmbedding = astEmbedding;
 
     }
 
@@ -129,6 +150,16 @@ public class PE extends Registry {
 
     public void setDescEmbedding(String descEmbeddings) {
         this.descEmbedding = descEmbeddings;
+    }
+
+    
+   
+    public String getAstEmbedding() {
+        return astEmbedding;
+    }
+
+    public void setAstEmbedding(String astEmbedding) {
+        this.astEmbedding = astEmbedding;
     }
 
     @Override
