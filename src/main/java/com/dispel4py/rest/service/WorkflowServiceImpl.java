@@ -110,4 +110,12 @@ public class WorkflowServiceImpl implements WorkflowService {
     }
 
 
+    @Override
+    @Transactional
+    public Collection getWorkflowsByPE(Long id, String user){
+        User owner = userDao.getUserByName(user);
+
+        return workflowDao.getWorkflowsByPE(id, owner);
+    }
+
 }

@@ -23,4 +23,6 @@ public interface WorkflowService {
     Collection getPEsByWorkflow(Long id, String user);
 
     Collection getPEsByWorkflow(String name, String user);
+
+    Collection getWorkflowsByPE(Long id, String user);
 }

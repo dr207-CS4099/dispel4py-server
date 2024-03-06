@@ -65,5 +65,10 @@ public class WorkflowController {
         return workflowService.getPEsByWorkflow(name, user);
     }
 
+    @GetMapping("/byPeID/{id}")
 
+    public Collection getWorkflowsByPE(@PathVariable(value = "id") Long id, @PathVariable String user){
+        
+        return workflowService.getWorkflowsByPE(id, user);
+    }
 }
