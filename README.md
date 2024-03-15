@@ -7,17 +7,6 @@ Clone the server application repository.
 ```
 /data/Laminar> git clone https://github.com/dr207-CS4099/dispel4py-server.git
 ```
-update dispel4py-server/src/main/resources/application.properties to point to the appropriate database
-To create a new database on the cs host servers:
-```
-mysql -u <username>
-CREATE DATABASE <username>_Laminar;
-```
-To retrieve database connection settings:
-```
-mysql-initial-settings
-```
-
 Enter the server directory.
 ```
 /data/Laminar> cd dispel4py-server
