@@ -12,7 +12,6 @@ import javax.persistence.*;
 import java.util.List;
 
 /**
- * TODO clean up
  * Model Class to represent Processing Elements (PEs)
  */
 
